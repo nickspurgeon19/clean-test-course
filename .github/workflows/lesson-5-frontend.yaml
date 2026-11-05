@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: <ZAP action and version from the previous card>
-        with:
+      with:
           target: 'https://hangryhippo.quantic.host'
   function_test:
     runs-on: ubuntu-latest
