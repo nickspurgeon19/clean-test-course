@@ -3,16 +3,18 @@ name: Lesson 5 DAST
 on:
   push:
     branches:
-      - lesson-5
+      - lesson-3
 jobs:
-  security_test:
+    security_test:
     needs: [deploy]
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-    - uses: <ZAP action and version from the previous card>
-      with:
+      - uses: zaproxy/action-baseline@v0.15.0
+        with:
           target: 'https://hangryhippo.quantic.host'
-  function_test:
+function_test:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -22,7 +24,7 @@ jobs:
       - run: npm install
       - name: Run functional tests
         run: npm test -- --coverage --watchAll=false
-  deploy:
+deploy:
     needs: [function_test]
     runs-on: ubuntu-latest
     defaults:
