@@ -5,6 +5,13 @@ on:
     branches:
       - lesson-5
 jobs:
+  security_test:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: <ZAP action and version from the previous card>
+        with:
+          target: 'https://hangryhippo.quantic.host'
   function_test:
     runs-on: ubuntu-latest
     defaults:
