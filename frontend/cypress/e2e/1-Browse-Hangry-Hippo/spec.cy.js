@@ -3,8 +3,14 @@ describe('Hits Home Page', () => {
     cy.visit('https://hangryhippo.quantic.host/');
   });
   it('displays the Welcome message', () => {
-    // We use the `cy.get()` command to get all elements that match the selector.
-    // Then, we use `should` to assert that there are is a Welcome message.
+    cy.contains('Handhelds').click();
+    cy.contains('Cheese Burger');
+    cy.contains('Fajita Tacos');
+    cy.contains('Appeteasers').click();
+    cy.contains('Tater Tots');
+    cy.contains('Buffalo Wings');
+    cy.contains('Cheese Burger').should('not.exist');
+    cy.contains('Fajita Tacos').should('not.exist');
     cy.get('h1').should(
       'have.text',
       "Welcome to Hangry Hippo! Hungry? Let's get started!"
